@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:layout_gravity="bottom"
+    android:background="@color/actionBarBg"
+    android:orientation="horizontal" 
+    android:baselineAligned="true">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/img_news"
+            android:contentDescription="@null"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/tab_btn_sel1" />
+
+        <TextView
+            android:id="@+id/txt_news"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/bottom_action_bar_news"
+            android:textColor="@color/white" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/img_video"
+            android:contentDescription="@null"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/tab_btn_nor2" />
+
+        <TextView
+            android:id="@+id/txt_video"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/bottom_action_bar_video"
+            android:textColor="@color/white" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/img_profession"
+            android:contentDescription="@null"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/tab_btn_nor3" />
+
+        <TextView
+            android:id="@+id/txt_profession"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/bottom_action_bar_profession"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+	<LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/img_data"
+            android:contentDescription="@null"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/tab_btn_nor4" />
+
+        <TextView
+            android:id="@+id/txt_data"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/bottom_action_bar_data"
+            android:textColor="@color/white" />
+    </LinearLayout>
+    
+	<LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/img_more"
+            android:contentDescription="@null"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/tab_btn_nor5" />
+
+        <TextView
+            android:id="@+id/txt_more"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/bottom_action_bar_more"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</LinearLayout>
