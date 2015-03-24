@@ -66,13 +66,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// 所有图片置为未选中
-		imgNews.setImageResource(R.drawable.tab_btn_nor1);
-		imgVideo.setImageResource(R.drawable.tab_btn_nor2);
-		imgProfession.setImageResource(R.drawable.tab_btn_nor3);
-		imgData.setImageResource(R.drawable.tab_btn_nor4);
-		imgMore.setImageResource(R.drawable.tab_btn_nor5);
-
 		fragmentTransaction = fragmentManager.beginTransaction();
 		hideFragments(fragmentTransaction);
 		// 根据点击的图片设置
@@ -87,10 +80,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			if(newsFragment==null){
 				newsFragment = new NewsFragment();
 				fragmentTransaction.add(R.id.fragment, newsFragment);
-				Log.d("output", "replace-news");
 			}else{
 				fragmentTransaction.show(newsFragment);
-				Log.d("output", "show-news");
 			}
 			fragmentTransaction.commit();
 			break;
@@ -104,10 +95,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				videoFragment=new VideoFragment();
 				// add加入
 				fragmentTransaction.add(R.id.fragment, videoFragment);
-				Log.d("output", "replace-video");
 			}else{
 				fragmentTransaction.show(videoFragment);
-				Log.d("output", "show-video");
 			}
 			
 			fragmentTransaction.commit();
@@ -133,6 +122,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			break;
 		}
 	}
+	
 	/** 
      * 将所有的Fragment都置为隐藏状态。 
      *  
@@ -140,6 +130,13 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
      *            用于对Fragment执行操作的事务 
      */  
     private void hideFragments(FragmentTransaction transaction) {  
+		// 所有图片置为未选中
+		imgNews.setImageResource(R.drawable.tab_btn_nor1);
+		imgVideo.setImageResource(R.drawable.tab_btn_nor2);
+		imgProfession.setImageResource(R.drawable.tab_btn_nor3);
+		imgData.setImageResource(R.drawable.tab_btn_nor4);
+		imgMore.setImageResource(R.drawable.tab_btn_nor5);
+		
         if (newsFragment != null) { 
             transaction.hide(newsFragment);  
         }  
