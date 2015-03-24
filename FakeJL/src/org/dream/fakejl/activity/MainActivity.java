@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,14 +24,16 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private ImageView imgProfession;
 	private ImageView imgMore;
 
-	NewsFragment newsFragment = new NewsFragment();
-	VideoFragment videoFragment = new VideoFragment();
+	private FragmentManager fragmentManager;
+	private FragmentTransaction fragmentTransaction;
+	private NewsFragment newsFragment;
+	private VideoFragment videoFragment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		fragmentManager = getSupportFragmentManager();
 		imgNews = (ImageView) findViewById(R.id.img_news);
 		imgVideo = (ImageView) findViewById(R.id.img_video);
 		imgProfession = (ImageView) findViewById(R.id.img_profession);
@@ -43,7 +46,16 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		imgProfession.setOnClickListener(this);
 		imgData.setOnClickListener(this);
 		imgMore.setOnClickListener(this);
-
+		initView();
+	}
+	
+	public void initView(){
+		fragmentTransaction = fragmentManager.beginTransaction();
+		hideFragments(fragmentTransaction);
+		newsFragment = new NewsFragment();
+		fragmentTransaction.add(R.id.fragment, newsFragment);
+		fragmentTransaction.commit();
+		Log.d("output", "add-news");
 	}
 
 	@Override
@@ -61,8 +73,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		imgData.setImageResource(R.drawable.tab_btn_nor4);
 		imgMore.setImageResource(R.drawable.tab_btn_nor5);
 
-		FragmentManager fragmentManager = getSupportFragmentManager();
-
+		fragmentTransaction = fragmentManager.beginTransaction();
+		hideFragments(fragmentTransaction);
 		// 根据点击的图片设置
 		switch (v.getId()) {
 		case R.id.img_news:
@@ -72,9 +84,14 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				return;
 			}
 			selectedView = imgNews;
-			FragmentTransaction fragmentTransaction = fragmentManager
-					.beginTransaction();
-			fragmentTransaction.replace(R.id.fragment, newsFragment);
+			if(newsFragment==null){
+				newsFragment = new NewsFragment();
+				fragmentTransaction.add(R.id.fragment, newsFragment);
+				Log.d("output", "replace-news");
+			}else{
+				fragmentTransaction.show(newsFragment);
+				Log.d("output", "show-news");
+			}
 			fragmentTransaction.commit();
 			break;
 		case R.id.img_video:
@@ -83,10 +100,17 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				return;
 			}
 			selectedView = imgVideo;
-			FragmentTransaction fragmentTransaction2 = fragmentManager
-					.beginTransaction();
-			fragmentTransaction2.replace(R.id.fragment, videoFragment);
-			fragmentTransaction2.commit();
+			if(videoFragment==null){
+				videoFragment=new VideoFragment();
+				// add加入
+				fragmentTransaction.add(R.id.fragment, videoFragment);
+				Log.d("output", "replace-video");
+			}else{
+				fragmentTransaction.show(videoFragment);
+				Log.d("output", "show-video");
+			}
+			
+			fragmentTransaction.commit();
 			break;
 		case R.id.img_profession:
 			imgProfession.setImageResource(R.drawable.tab_btn_sel3);
@@ -109,5 +133,19 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			break;
 		}
 	}
+	/** 
+     * 将所有的Fragment都置为隐藏状态。 
+     *  
+     * @param transaction 
+     *            用于对Fragment执行操作的事务 
+     */  
+    private void hideFragments(FragmentTransaction transaction) {  
+        if (newsFragment != null) { 
+            transaction.hide(newsFragment);  
+        }  
+        if (videoFragment != null) {  
+            transaction.hide(videoFragment);  
+        }   
+    }  
 
 }

@@ -43,7 +43,7 @@ public class VideoFragment extends Fragment {
 		data.add(videoFragmentItemLastest);
 		data.add(videoFragmentItemProfession);
 
-		pager.setAdapter(new TabPageIndicatorAdapter(getActivity().getSupportFragmentManager()));
+		pager.setAdapter(new TabPageIndicatorAdapter(getChildFragmentManager()));
 		TabPageIndicator tabPageIndicator = (TabPageIndicator) view
 				.findViewById(R.id.video_indicator);
 		tabPageIndicator.setViewPager(pager);

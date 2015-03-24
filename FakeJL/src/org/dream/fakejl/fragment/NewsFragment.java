@@ -39,13 +39,13 @@ public class NewsFragment extends Fragment {
 		NewsFragmentItemLastest newsFragmentItemLastest = new NewsFragmentItemLastest();
 		NewsFragmentItemInternal newsFragmentItemInternal = new NewsFragmentItemInternal();
 		NewsFragmentItemExternal meFragment = new NewsFragmentItemExternal();
-
+		
 		data = new ArrayList<Fragment>();
 		data.add(newsFragmentItemLastest);
 		data.add(newsFragmentItemInternal);
 		data.add(meFragment);
 
-		pager.setAdapter(new TabPageIndicatorAdapter(getFragmentManager()));
+		pager.setAdapter(new TabPageIndicatorAdapter(getChildFragmentManager()));
 		TabPageIndicator tabPageIndicator = (TabPageIndicator) view
 				.findViewById(R.id.indicator);
 		tabPageIndicator.setViewPager(pager);
